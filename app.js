@@ -60,7 +60,7 @@ function renderHome() {
   main.innerHTML = `
     <div class="eyebrow">BSM 429 · Sakarya Üniversitesi</div>
     <h1>Veri Madenciliği vize rehberi</h1>
-    <p class="lead">1–6. haftaların özetleri, formülleri, elle çözülmüş örnekleri ve sonunda 5 vize denemesi. Her haftayı bitirince "Bu haftayı tamamladım" de; ilerlemen bu tarayıcıda saklanır.</p>
+    <p class="lead">1–6. haftaların özetleri, formülleri, elle çözülmüş örnekleri ve sonunda 10 vize denemesi. Her haftayı bitirince "Bu haftayı tamamladım" de; ilerlemen bu tarayıcıda saklanır.</p>
     <div class="card"><b>İlerleme:</b> ${done.length} / ${WEEKS.length} hafta tamamlandı</div>
     <h2>Haftalar</h2>
     <div class="week-grid">
@@ -75,7 +75,7 @@ function renderHome() {
     <ol>
       <li>Her haftanın özetini oku; "Elle örnek" kutularını kâğıt kalemle kendin çöz.</li>
       <li>Formül kutularını bir sayfaya yaz (destek/güven/lift, Gini/entropi, normalizasyonlar, 1,5·ÇAA).</li>
-      <li>Deneme 1–3 kavramları, Deneme 4 hesapları, Deneme 5 vaka ve tuzakları ölçer.</li>
+      <li>Deneme 1–3 kavramları, Deneme 4 hesapları, Deneme 5 vaka ve tuzakları ölçer. Deneme 6–9 haftalara odaklanır, Deneme 10 genel provadır.</li>
       <li>Yanlış yaptığın sorunun haftasına dönüp o bölümü tekrar oku.</li>
     </ol>
     <div class="box tip"><span class="label">Sınavda en çok karıştırılanlar</span>
@@ -115,7 +115,7 @@ function renderTestList() {
   const best = store.get("vm-best", {});
   main.innerHTML = `
     <div class="eyebrow">Vize denemeleri</div>
-    <h1>5 deneme, 100 soru</h1>
+    <h1>${TESTS.length} deneme, ${TESTS.reduce((s, t) => s + t.questions.length, 0)} soru</h1>
     <p class="lead">Her deneme 20 sorudan oluşur ve 1–6. haftaları karışık sorar. Şıkka tıkladığın anda doğru cevap ve açıklaması görünür.</p>
     <div class="test-list">
       ${TESTS.map((t, i) => `
