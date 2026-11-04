@@ -1,5 +1,7 @@
 // Haftalık özetler. Her hafta: id, başlık, kısa açıklama, ilke ve HTML gövde.
-const WEEKS = [
+import type { Week } from "./types"
+
+export const WEEKS_1_6: Week[] = [
 {
   id: 1,
   title: "Veri Madenciliğine Giriş ve Keşif Süreci",
@@ -304,7 +306,7 @@ Sınırlarla:  4,4,15 · 21,21,24 · 25,25,34   (8 → |8−4|=4 < |8−15|=7 �
 <tr><td>kNN, k-ortalamalar, hiyerarşik kümeleme, SVM, YSA, PCA, Lasso</td><td>Karar ağacı, rastgele orman, gradyan artırma, Naive Bayes, birliktelik kuralları</td></tr>
 </table></div>
 <div class="box key"><span class="label">Tek soruluk test</span>Algoritma uzaklık ya da çarpım kullanıyor mu? Evet → ölçekle. Yalnızca sıralamaya bakıyorsa gerekmez.</div>
-<p><b>Log dönüşümü</b> dağılımın <i>şeklini</i> değiştirir (ölçekleme yalnızca ekseni). Çarpımsal farkı toplamsala çevirir: oranı aynı olan iki çiftin log farkı aynıdır (×2 → 0,301). Ne zaman: sağa çarpık (ort/medyan ≫ 1), mertebe farkı (maks/min çok büyük), çarpımsal ilişki. Sıfır/negatifte <code>log(x+1)</code>. log₁₀2 = 0,301 · log₁₀3 = 0,477 · log₁₀1,5 = 0,176.</p>
+<p><b>Log dönüşümü</b> dağılımın <i>şeklini</i> değiştirir (ölçekleme yalnızca ekseni). Çarpımsal farkı toplamsala çevirir: oranı aynı olan iki çiftin log farkı aynıdır (×2 → 0,301). Ne zaman: sağa çarpık (ort/medyan ≫ 1), mertebe farkı (maks/min çok büyük), çarpımsal ilişki. Sıfır içeren veride <code>log(x+1)</code> (yalnız x &gt; −1 için tanımlıdır; negatiflerin tümünü çözmez). log₁₀2 = 0,301 · log₁₀3 = 0,477 · log₁₀1,5 = 0,176.</p>
 <div class="table-wrap"><table>
 <tr><th>Kodlama</th><th>Ne zaman</th></tr>
 <tr><td>One-hot</td><td>Nominal, az kategori (şehir, renk)</td></tr>
@@ -362,7 +364,7 @@ Ridge: min Σ(y − ŷ)² + λ · Σβ²      → küçültür ama sıfırlamaz<
   principle: "Aynı veri, farklı soru, farklı şema. Şemayı veri değil, soracağınız soru belirler.",
   body: `
 <h2>1. Neden ayrı depo?</h2>
-<p>Rapor işlemsel veritabanında çalışınca üç sorun: <b>yavaş</b> (çok join), <b>engelliyor</b> (rezervasyon alınamıyor), <b>eksik</b> (silinmiş otelin geçmişi yok — en sinsisi, çünkü yanlışlıktır). Çözüm: ayrı kopya + analize uygun şema + hiçbir şey silinmez = <b>veri ambarı</b>.</p>
+<p>Rapor işlemsel veritabanında çalışınca üç sorun: <b>yavaş</b> (çok join), <b>engelliyor</b> (rezervasyon alınamıyor), <b>eksik</b> (silinmiş otelin geçmişi yok — en sinsisi, çünkü yanlışlıktır). Çözüm: ayrı kopya + analize uygun şema + geçmiş silinmez = <b>veri ambarı</b>.</p>
 
 <h2>2. OLTP ↔ OLAP</h2>
 <div class="table-wrap"><table>
@@ -384,7 +386,7 @@ Ridge: min Σ(y − ŷ)² + λ · Σβ²      → küçültür ama sıfırlamaz<
 <tr><td>Konu odaklı</td><td>Konulara göre (müşteri, satış), iş adımlarına göre değil</td></tr>
 <tr><td><b>Bütünleşik</b></td><td>Birçok sistemin verisi tek dile çevrilir (E/K ↔ M/F, TL ↔ EUR, 8412 ↔ MUS-8412). En zoru; teknik değil <i>anlaşma</i> işi</td></tr>
 <tr><td>Zamana bağlı</td><td>Her kayıt zaman damgalı; eski değer saklanır. ≠ gerçek zamanlı</td></tr>
-<tr><td>Değişmez</td><td>Giren veri değiştirilmez/silinmez; yeni bilgi yeni satır</td></tr>
+<tr><td>Değişmez</td><td>Giren veri normalde değiştirilmez/silinmez; yeni bilgi yeni satır (istisna: SCD Tip 1 düzeltmesi, yasal silme/anonimleştirme)</td></tr>
 </table></div>
 
 <h2>4. Mimari ve ETL</h2>
@@ -533,7 +535,7 @@ d = 6 → 63 küme, 602 kural       d = 20 → 1.048.575 küme, ≈ 3,5 milyar k
 <p><b>2. tur:</b> 5·4/2 = 10 aday. Elenen: Peynir-Yumurta (0), Yumurta-Zeytin (0). Süt-Yumurta (2) ve Süt-Zeytin (2) tam eşikte geçer → <b>L₂ = 8</b>.</p>
 <p><b>3. tur:</b> Birleştirme (ilk k−2 öğesi aynı olanlar) 8 aday üretir; 3'ü budanır (alt kümesinde PY veya YZ var). Sayılan 5: EPS 2 ✓ · EPZ 3 ✓ · ESY 2 ✓ · <b>ESZ 1 ✗</b> · PSZ 2 ✓ → <b>L₃ = 4</b>.</p>
 <p><b>4. tur:</b> EPS + EPZ → {E,P,S,Z}; alt kümesi ESZ L₃'te yok → budanır. C₄ boş, dur.</p>
-<p><b>Bilanço:</b> 17 sık küme (5+8+4), 3 veritabanı taraması. En uzun sık küme k öğeliyse k tarama.</p>
+<p><b>Bilanço:</b> 17 sık küme (5+8+4), 3 veritabanı taraması. Bu veride C₄ budamayla boşaldığı için 3 tarama yeter; genelde sayılacak aday kaldıysa k+1. tarama gerekir.</p>
 </div></details>
 
 <h2>6. Kural üretme</h2>
@@ -552,7 +554,7 @@ d = 6 → 63 küme, 602 kural       d = 20 → 1.048.575 küme, ≈ 3,5 milyar k
 <h2>7. FP-Growth ve ECLAT</h2>
 <div class="table-wrap"><table>
 <tr><th></th><th>Apriori</th><th>FP-Growth</th><th>ECLAT</th></tr>
-<tr><td>Tarama</td><td>k tur → k tarama</td><td><b>2</b></td><td>1 (dikey gösterime çevirirken)</td></tr>
+<tr><td>Tarama</td><td>Tur başına 1 tarama</td><td><b>2</b></td><td>1 (dikey gösterime çevirirken)</td></tr>
 <tr><td>Aday üretir mi?</td><td>Evet</td><td><b>Hayır</b></td><td>Evet, sayım kesişimle</td></tr>
 <tr><td>Fikir</td><td>Birleştir–buda–say</td><td>Veriyi FP-ağacına sıkıştır</td><td>Öğe → sepet listesi (TID), kesişim</td></tr>
 <tr><td>Zayıf</td><td>Çok aday, çok tarama</td><td>Ağaç belleğe sığmalı</td><td>Uzun listeler belleği zorlar</td></tr>
@@ -602,7 +604,7 @@ d = 6 → 63 küme, 602 kural       d = 20 → 1.048.575 küme, ≈ 3,5 milyar k
 <div class="formula">Gini = 1 − Σ pᵢ²
 Gini(bölme) = (n_sol/n)·Gini(sol) + (n_sağ/n)·Gini(sağ)
 azalma = Gini(ebeveyn) − Gini(bölme)        → en büyük azalma seçilir</div>
-<p>Saf düğüm 0. En büyük değer <b>1 − 1/k</b>: 2 sınıfta 0,5, 3 sınıfta 0,667. Sezgi: rastgele çekilen iki kaydın farklı sınıftan çıkma olasılığı.</p>
+<p>Saf düğüm 0. En büyük değer <b>1 − 1/k</b>: 2 sınıfta 0,5, 3 sınıfta 0,667. Sezgi: <b>geri koyarak</b> rastgele çekilen iki kaydın farklı sınıftan çıkma olasılığı.</p>
 <p>Kredi örneği (5 ödedi, 5 ödemedi, Gini 0,50): "Düzenli maaşı var mı?" → iki grup 4–1 / 1–4 → 0,32, azalma 0,18. "Doğum ayı ilk yarıda mı?" → 3–2 / 2–3 → 0,48, azalma 0,02. <b>Maaş seçilir.</b> Ağırlıklı ortalama çünkü büyük grubun sözü daha çok geçmeli.</p>
 
 <details class="example" open><summary>Elle örnek: 12 müşteri, tişört bedeni (S/M/L)</summary><div class="inner">
@@ -647,7 +649,7 @@ Bilgi kazancı(A) = Entropi(ebeveyn) − Σ (nᵥ/n)·Entropi(v)</div>
 <details class="example"><summary>Hava durumu verisi (14 gün, Quinlan)</summary><div class="inner">
 <p>Hava: Güneşli 2E·3H (0,971) · Bulutlu 4E (0) · Yağmurlu 3E·2H (0,971)</p>
 <div class="formula">Ağırlıklı = 5/14·0,971 + 4/14·0 + 5/14·0,971 = 0,694
-Kazanç(Hava) = 0,940 − 0,694 = 0,247</div>
+Kazanç(Hava) = 0,940 − 0,694 ≈ 0,247 (yuvarlanmamış değerlerle)</div>
 <div class="table-wrap"><table>
 <tr><th>Öznitelik</th><th>Bilgi kazancı</th><th>Gini azalması</th></tr>
 <tr><td>Hava</td><td>0,247</td><td>0,116</td></tr>
