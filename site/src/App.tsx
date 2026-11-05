@@ -27,6 +27,45 @@ function seededOrder(n: number, seed: number) {
 }
 const totalQ = TESTS.reduce((s, t) => s + t.questions.length, 0)
 
+const BEGINNER: Record<number, { intro: string; example: string; reflex: string }> = {
+  1: {
+    intro: 'Bu hafta veri madenciliğinin ne olduğunu ve bir problemi nasıl doğru soruya çevireceğini öğreniyorsun. En önemli fikir: bilgisayar önce algoritma seçmez; önce hangi kararı destekleyeceğimizi belirleriz.',
+    example: 'Marketin 100.000 fişi var. “Bira alanlar cips de alıyor mu?” diye sorarsak birliktelik kuralı; “Bu müşteri ayrılacak mı?” diye sorarsak sınıflandırma; “Müşteriler doğal olarak hangi gruplara ayrılıyor?” diye sorarsak kümeleme düşünürüz.',
+    reflex: 'Sınav refleksi: Etiket/hedef var mı? Varsa kategori mi sayı mı? Yoksa grup mu, birliktelik mi, anomali mi?'
+  },
+  2: {
+    intro: 'Bu hafta verinin türünü doğru okumayı öğreniyorsun. Bir sayının rakam olması onun sayısal anlam taşıdığı anlamına gelmez: posta kodu bir isimdir, sıcaklık ise aralık ölçeğidir.',
+    example: 'A müşterisi 10 TL harcamış, B 1000 TL harcamış olabilir. Uzaklık hesabında harcama sütunu diğer sütunları ezebilir. Bu yüzden kNN ve k-ortalamalar gibi yöntemlerde ölçekleme önemlidir.',
+    reflex: 'Sınav refleksi: Önce ölçek türünü sor. Sonra benzerlik/uzaklık ölçüsünü seç. Son olarak ölçekleme gerekip gerekmediğine bak.'
+  },
+  3: {
+    intro: 'Bu hafta model kurmadan önce veriyi temizlemeyi öğreniyorsun. Eksik, hatalı, farklı ölçeklerde veya yanlış kodlanmış veri modele yanlış bilgi verebilir.',
+    example: 'Bir sensör sıcaklık yerine -999 gönderiyorsa bunu gerçek sıcaklık sanmak modelin öğrenmesini bozar. Ayrıca test verisinin ortalamasını kullanarak eğitim verisini ölçeklemek de veri sızıntısıdır.',
+    reflex: 'Sınav refleksi: “Bu bilgi modeli eğitirken normalde bilmemem gereken test bilgisinden mi geliyor?” Evetse sızıntıdır.'
+  },
+  4: {
+    intro: 'Bu hafta veritabanından raporlama ve veri ambarına geçiyorsun. Amaç tek tek işlem yapmak değil, geçmişteki büyük veriyi hızlı biçimde özetleyip iş sorularına cevap vermektir.',
+    example: '“2025 Temmuzda İstanbul’daki otellerin doluluğu kaçtı?” sorusunda zaman + şehir + otel gibi boyutları farklı seviyelerde toplarız. Roll-up ayrıntıyı azaltır, drill-down ayrıntıyı açar.',
+    reflex: 'Sınav refleksi: OLTP = günlük işlemler; OLAP = analiz. Roll-up yukarı/toplama, drill-down aşağı/ayrıntı, slice tek boyut, dice birden fazla boyut.'
+  },
+  5: {
+    intro: 'Bu hafta market sepeti mantığını öğreniyorsun. Amaç “A alındığında B de alınma eğiliminde mi?” sorusunu destek, güven ve lift ile ölçmek.',
+    example: '8 fişin 4’ünde peynir ve zeytin birlikteyse destek 4/8’dir. Peynir alan 5 kişinin 4’ü zeytin aldıysa güven 4/5’tir. Zeytin zaten herkesin aldığı bir ürünse yüksek güven tek başına anlamlı olmayabilir; lift burada devreye girer.',
+    reflex: 'Sınav refleksi: Destek → tüm sepetleri say. Güven → öncülü say. Lift → ilişkiyi bağımsızlığa göre karşılaştır.'
+  },
+  6: {
+    intro: 'Bu hafta “veriden bir sınıf tahmin etme” işini karar ağaçlarıyla öğreniyorsun. Ağaç aslında art arda sorulan basit EĞER–İSE sorularıdır.',
+    example: 'Bir müşteri için “Kilo ≤ 60 mı?” diye sor. Sonra kalan grupta “Boy = Uzun mu?” diye sor. Her soru sınıfları daha temiz gruplara ayırmaya çalışır.',
+    reflex: 'Sınav refleksi: Gini/entropi = karışıklık. Bölme sonrası karışıklığı en çok azaltan soru seçilir. Test verisine bakarak ayar seçmek sızıntıdır.'
+  },
+  7: {
+    intro: 'Bu hafta karar ağacının sayı tahmin eden halini ve birden fazla ağacın birlikte çalışmasını öğreniyorsun. Regresyon ağacında yaprak tek bir sınıf değil, bir sayı üretir.',
+    example: '10 evin fiyatını tahmin ediyoruz. 127,5 m² eşiği veriyi en iyi ayırıyorsa ağaç “m² ≤ 127,5?” diye sorar. Yaprakta kalan evlerin ortalaması tahmin olur. Orman ise farklı ağaçların oyunu/ortalamasını birleştirir.',
+    reflex: 'Sınav refleksi: Regresyon ağacı → SSE ve yaprak ortalaması. Budama → gereksiz dalları kes. Bagging/orman → varyansı azalt. Boosting → önceki hatalara odaklan.'
+  }
+}
+
+
 function A({ to, className, children, onClick }: { to: string; className?: string; children: React.ReactNode; onClick?: () => void }) {
   return <a href={`#${to}`} className={className} onClick={onClick}>{children}</a>
 }
@@ -99,7 +138,15 @@ function WeekPage({ id }: { id: number }) {
     <div className="mx-auto max-w-3xl">
       <Badge variant="secondary">Hafta {w.id}</Badge>
       <h1 className="mt-2 text-3xl font-semibold tracking-tight">{w.title}</h1>
-      <div className="lesson"><div className="box key"><span className="label">Haftanın ilkesi</span>{w.principle}</div></div>
+      <div className="lesson">
+        <div className="box key"><span className="label">Haftanın ilkesi</span>{w.principle}</div>
+        <div className="box tip">
+          <span className="label">Önce bunu anla</span>
+          <p><b>Basit anlatım:</b> {BEGINNER[id]?.intro}</p>
+          <p><b>Günlük hayat örneği:</b> {BEGINNER[id]?.example}</p>
+          <p><b>Sınav refleksi:</b> {BEGINNER[id]?.reflex}</p>
+        </div>
+      </div>
       <div className="lesson" dangerouslySetInnerHTML={{ __html: w.body }} />
       {slots.sse && createPortal(<SseDemo />, slots.sse)}
       {slots.vote && createPortal(<VoteDemo />, slots.vote)}
@@ -118,7 +165,10 @@ function TestList() {
     <div className="mx-auto max-w-3xl">
       <Badge variant="secondary">Vize denemeleri</Badge>
       <h1 className="mt-2 text-3xl font-semibold tracking-tight">{TESTS.length} deneme, {totalQ} soru</h1>
-      <p className="mt-1 text-muted-foreground">Şıkka tıkladığın anda doğru cevap ve açıklaması görünür.</p>
+      <p className="mt-1 text-muted-foreground">Önce soruyu kendin çöz. Şıkkı seçince doğru cevap, kısa gerekçe ve tekrar etmen gereken haftayı görebilirsin.</p>
+      <div className="mt-4 rounded-lg border bg-muted/40 p-3 text-sm">
+        <b>Deneme taktiği:</b> Önce sorunun hangi konuyu ölçtüğünü bul → bildiğin formülü/kurala yaz → şıkları ele → sonra cevabı işaretle. Yanlışsa sadece cevabı ezberleme; açıklamadaki “neden” kısmını oku.
+      </div>
       <div className="mt-5 grid gap-2">
         {TESTS.map((t, i) => (
           <A key={i} to={`deneme-${i + 1}`} className="flex items-center gap-3 rounded-lg border p-3 transition-colors hover:bg-accent">
@@ -179,7 +229,13 @@ function TestRun({ n }: { n: number }) {
                   </button>
                 ))}
               </div>
-              {a !== undefined && <p className="rise mt-2 rounded-md bg-muted/60 p-2 text-xs leading-relaxed"><b>{a === q.a ? 'Doğru.' : 'Yanlış.'}</b> <span dangerouslySetInnerHTML={{ __html: q.e }} /></p>}
+              {a !== undefined && (
+                <div className="rise mt-2 rounded-md bg-muted/60 p-2.5 text-xs leading-relaxed">
+                  <p><b>{a === q.a ? '✓ Doğru.' : '✗ Yanlış.'}</b></p>
+                  <p className="mt-1"><b>Neden?</b> <span dangerouslySetInnerHTML={{ __html: q.e }} /></p>
+                  <p className="mt-1 text-muted-foreground"><b>Tek cümlelik kural:</b> Sorudaki kavramı kendi cümlenle tekrar et; örneğin “etiket yoksa ve normalden farklı kayıt aranıyorsa anomali” gibi.</p>
+                </div>
+              )}
             </div>
           )
         })}
