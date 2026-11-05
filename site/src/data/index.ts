@@ -10,8 +10,11 @@ export const WEEKS: Week[] = [
   WEEK7,
 ]
 
+// Vize için 5 deneme.
+// Her deneme 1–7. haftalardan soru içerir.
+// Hafta 7 soruları diğer haftalarla aynı deneme sistemine eklenir.
 export const TESTS: Test[] = TESTS_BASE
-  .slice(0, 3)
+  .slice(0, 5)
   .map((t, i) => ({
     ...t,
     desc: t.desc.replace('1–6. haftalar', '1–7. haftalar'),
