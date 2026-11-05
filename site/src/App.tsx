@@ -113,7 +113,7 @@ function Home() {
           </CardHeader></Card></A>
         ))}
       </div>
-      <h2 className="mt-8 mb-3 text-lg font-semibold">Önerilen çalışma planı</h2>
+      <h2 className="mt-8 mb-3 text-lg font-semibold">En verimli çalışma sırası</h2>
       <ol className="ml-5 list-decimal space-y-1 text-sm leading-relaxed">
         <li>Her haftanın özetini oku; elle örnekleri kâğıt kalemle kendin çöz.</li>
         <li>Formülleri bir sayfaya yaz: destek/güven/lift, Gini/entropi, SSE, α, normalizasyonlar, 1,5·ÇAA.</li>
