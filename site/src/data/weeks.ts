@@ -8,7 +8,7 @@ export const WEEKS_1_6: Week[] = [
   short: "Veri→bilgi merdiveni, altı görev, KDD · CRISP-DM · SEMMA, lift'e giriş, çoklu karşılaştırma.",
   principle: "Doğru soru, doğru algoritmadan önce gelir. CRISP-DM'in ilk kutusu \"veri\" değil, \"iş\"tir.",
   body: `
-<h2>1. Veriden karara: dört basamak</h2>
+<h2>1. Veriden karara: dört basamak</h2><div class="box tip"><span class="label">Çok basit düşün</span>Ham veriyi tek başına kullanmayız: önce anlamlandırır, sonra örüntü bulur, en sonunda karara çeviririz. Bu bölümde veri→enformasyon→bilgi→karar farkını kur.</div>
 <div class="table-wrap"><table>
 <tr><th>Basamak</th><th>Ne demek?</th><th>Market örneği</th></tr>
 <tr><td><b>Veri</b></td><td>Bağlamı olmayan ham işaret</td><td>Fişteki "37,5"</td></tr>
@@ -19,7 +19,7 @@ export const WEEKS_1_6: Week[] = [
 <div class="box warn"><span class="label">Dikkat</span>Basamaklar arasında geçiş kendiliğinden olmaz; her geçişte bir insan kararı vardır.</div>
 <p><b>Neden şimdi?</b> Üç eğri buluştu: üretilen veri ↑, depolama maliyeti ↓, hesaplama gücü ↑. Dördüncü gelişme <b>barkod</b> (1980'ler): fiş içeriği kaydedilince pazar sepeti analizi mümkün oldu.</p>
 
-<h2>2. Tanım ve üç sıfat</h2>
+<h2>2. Tanım ve üç sıfat</h2><div class="box tip"><span class="label">Çok basit düşün</span>Veri madenciliğini tek cümlede hatırla: daha önce bilinmeyen + geçerli + işe yarar örüntü. Örnek bulgunun bu üç şartı sağlayıp sağlamadığını kontrol et.</div>
 <div class="box key"><span class="label">Tanım</span>Büyük veri yığınları içinden <b>önceden bilinmeyen</b>, <b>geçerli</b> ve <b>işe yarar</b> örüntülerin keşfi.</div>
 <div class="table-wrap"><table>
 <tr><th>Sıfat</th><th>Neyi dışarıda bırakır?</th></tr>
@@ -41,7 +41,7 @@ export const WEEKS_1_6: Week[] = [
 </table></div>
 <div class="box tip"><span class="label">Keşifsel ↔ doğrulayıcı</span>Keşifsel analizde hipotez <b>çıktıdır</b>, doğrulayıcıda <b>girdidir</b>. Günah keşfetmek değil, keşfi doğrulanmış gibi sunmaktır.</div>
 
-<h2>3. Altı görev</h2>
+<h2>3. Altı görev</h2><div class="box tip"><span class="label">Çok basit düşün</span>Önce hedef/etiket var mı diye bak. Hedef varsa kategori→sınıflandırma, sayı→regresyon; hedef yoksa grup→kümeleme, birlikte görülme→birliktelik, sıra dışı→anomali.</div>
 <p>Ayrımı belirleyen soru: <b>hedef sütun var mı?</b> Varsa <b>kestirimci</b> (predictive), yoksa <b>tanımlayıcı</b> (descriptive).</p>
 <div class="table-wrap"><table>
 <tr><th>Görev</th><th>Tür</th><th>Soru</th><th>Hafta</th></tr>
@@ -54,7 +54,7 @@ export const WEEKS_1_6: Week[] = [
 </table></div>
 <div class="box key"><span class="label">En önemli refleks</span>"Bu işlem sahte mi?" → elinde "sahte" etiketli geçmiş varsa <b>sınıflandırma</b>, yoksa <b>anomali tespiti</b>. Önce "elimde etiket var mı?" diye sor.</div>
 
-<h2>4. Süreç çerçeveleri</h2>
+<h2>4. Süreç çerçeveleri</h2><div class="box tip"><span class="label">Çok basit düşün</span>KDD, CRISP-DM ve SEMMA'yı ezberlemek yerine akışlarını karşılaştır: nerede başlıyor, veri madenciliği nerede, sahaya alma var mı? Sınavda en güçlü ayraç CRISP-DM'in iş anlayışı ve yayılımıdır.</div>
 <h3>KDD (Fayyad ve ark., 1996) — 5 adım</h3>
 <ol><li>Seçim</li><li>Ön işleme</li><li>Dönüştürme</li><li><b>Veri madenciliği</b> (algoritma burada çalışır)</li><li>Yorumlama / değerlendirme</li></ol>
 <p>Zamanın <b>%70–80'i ilk üç adımda</b> geçer. Süreç bir döngüdür.</p>
@@ -85,13 +85,13 @@ export const WEEKS_1_6: Week[] = [
 </table></div>
 <div class="box key">Yalnızca <b>CRISP-DM</b> hem işle başlar hem yayılımla biter. Eleştirileri: güncellenmedi (2000), ekip/rol tanımı yok, çevik değil. Yine de araçtan bağımsız, işle başlıyor ve döngüsel olduğu için ayakta.</div>
 
-<h2>5. Lift'e ilk bakış</h2>
+<h2>5. Lift'e ilk bakış</h2><div class="box tip"><span class="label">Çok basit düşün</span>Lift'i 'rastgele seçime göre kaç kat daha iyi?' diye düşün. Örneğin genel ayrılma %12, seçtiğin grupta %36 ise lift=3.</div>
 <div class="formula">lift = dilimdeki oran ÷ genel oran</div>
 <p>Telekom: 100.000 abone, %12 ayrılıyor. Modelin en riskli %10'u (10.000 kişi) içinde 3.600 kişi ayrılıyor → %36 ÷ %12 = <b>lift 3</b>. Rastgele seçimin lift'i daima 1'dir. Kusursuz modelin tavanı burada 12.000/10.000 değil, 10.000/1.200 = <b>8,33</b>.</p>
 <div class="box warn"><span class="label">Neden doğruluk değil?</span>"Kimse ayrılmaz" diyen model %88 doğruluk alır ama lift'i 1'dir. Doğruluk düşerken (%88 → %83) lift 1'den 3'e çıkabilir. Doğruluğu her zaman <b>karşılaştırma tabanıyla</b> okuyun.</div>
 <p><b>Sepet versiyonu:</b> 100.000 fişte kek oranı %10, kahve alanlarda %15 → lift 1,5. Destek (yaygınlık) ve lift (ilişkinin gücü) <i>birlikte</i> istenir: {yılan yemi}→{ısıtıcı} lift 12 ama 60 fiş → uygulanamaz; {ekmek}→{su} destek yüksek, lift ≈ 1 → bilgi yok.</p>
 
-<h2>6. Yeterince ararsanız mutlaka bulursunuz</h2>
+<h2>6. Yeterince ararsanız mutlaka bulursunuz</h2><div class="box tip"><span class="label">Çok basit düşün</span>Aynı anda çok fazla hipotez denersen tesadüfen anlamlı sonuç bulabilirsin. 20 bağımsız testte en az bir sahte pozitif olasılığının yaklaşık %64 olduğunu hesaplamayı öğren.</div>
 <div class="formula">P(en az bir sahte bulgu) = 1 − 0,95ⁿ</div>
 <div class="table-wrap"><table>
 <tr><th>Hipotez (n)</th><td>1</td><td>5</td><td>20</td><td>50</td><td>100</td></tr>
@@ -99,11 +99,11 @@ export const WEEKS_1_6: Week[] = [
 </table></div>
 <p>500 ürünlü markette ikili sayısı C(500,2) = 124.750. Önlemler: <b>(1)</b> hipotezi önce yaz, <b>(2)</b> çok deneyeceksen eşiği düşür — Bonferroni: %5 ÷ n, <b>(3)</b> bulguyu ikinci bir veride sına.</p>
 
-<h2>7. Vaka: bira ve bebek bezi</h2>
+<h2>7. Vaka: bira ve bebek bezi</h2><div class="box tip"><span class="label">Çok basit düşün</span>Birliktelik bulmak ile nedenini açıklamak farklıdır. Veride bira ve bebek bezinin beraber görülmesi, 'genç babalar yüzünden' demek için tek başına yeterli değildir.</div>
 <p>1992, Blischok / NCR, Osco Drug, ~1,2 milyon sepet, ~25 mağaza. 17–19 arası bira–bebek bezi birlikteliği <b>gerçek</b>. "Genç babalar" açıklaması ve "raflar değiştirildi, satış patladı" kısmı <b>efsane</b>. Osco gerçekte ~5.000 yavaş satan ürünü raftan kaldırdı.</p>
 <div class="box tip"><span class="label">Bir bulguyu duyduğunda üç soru</span>1) Kim ölçtü? 2) Hangi veride? 3) Sonrasında ne oldu? — en sık atlanan üçüncüsü.</div>
 
-<h2>Tuzak köşesi</h2>
+<h2>Tuzak köşesi</h2><div class="box tip"><span class="label">Çok basit düşün</span>Bu bölümde önce tanımı öğren, sonra verilen örneği kapatıp kendin çöz. Son olarak formülün neyi ölçtüğünü ve benzer kavramlardan farkını kendi cümlenle söyle.</div>
 <div class="table-wrap"><table>
 <tr><th>Bunu duyduğunuzda…</th><th>…eksik olan</th></tr>
 <tr><td>"Veriyi bir analiz edelim"</td><td>Karar sorusu</td></tr>
@@ -119,11 +119,11 @@ export const WEEKS_1_6: Week[] = [
   short: "Ölçek türleri, ikili öznitelikler, veri kalitesi, beş sayı özeti, uzaklık ölçüleri, normalizasyon, Jaccard–SMC.",
   principle: "Ölçtüğünü seçersin. Uzaklık ölçüsü ve ölçekleme modelden önce verilen ve modeli belirleyen kararlardır.",
   body: `
-<h2>1. Veri kümesinin anatomisi</h2>
+<h2>1. Veri kümesinin anatomisi</h2><div class="box tip"><span class="label">Çok basit düşün</span>Satır=kayıt, sütun=öznitelik, hedef=etiket. Bir sütunun rakamla tutulması onun sayısal ölçek olduğu anlamına gelmez; posta kodu buna güzel örnektir.</div>
 <p>Satır = <b>kayıt</b> (gözlem, örnek, instance) · Sütun = <b>öznitelik</b> (değişken, feature) · Hedef sütun = <b>etiket</b> (label, target).</p>
 <p><b>Veri sözlüğü</b> her sütun için 4 soru: Ne ölçüyor? Birimi ne? Ölçek türü ne? <b>Eksik değer nasıl işaretlenmiş?</b> (en çok atlanan — kan basıncı = 0 ölçülmemiştir).</p>
 
-<h2>2. Dört ölçek türü</h2>
+<h2>2. Dört ölçek türü</h2><div class="box tip"><span class="label">Çok basit düşün</span>Ölçeği seçmeden ortalama, oran veya uzaklık hesabına geçme. Nominal=isim, sıralı=sıra, aralık=eşit fark ama gerçek sıfır yok, oran=gerçek sıfır.</div>
 <div class="table-wrap"><table>
 <tr><th>Ölçek</th><th>Özellik</th><th>Örnek</th><th>Anlamlı işlem</th></tr>
 <tr><td><b>Nominal</b></td><td>Yalnızca ad; sıra yok</td><td>il, kan grubu, posta kodu, öğrenci no</td><td>= ≠, mod, frekans</td></tr>
@@ -136,13 +136,13 @@ export const WEEKS_1_6: Week[] = [
 <p>Sıralı veride ortalama tartışmalıdır: A grubu (2 üniversite + 3 ilkokul) ile B grubu (5 lise) karşılaştırması 1-2-3-4 kodlamada B'yi (2,2 &lt; 3,0), 1-2-3-10 kodlamada A'yı (4,6 &gt; 3,0) daha eğitimli gösterir. <b>Karar ağacı bundan etkilenmez</b> (yalnızca eşik sorar); kNN, k-ortalamalar, doğrusal modeller etkilenir.</p>
 <div class="box warn">"26–40" yaş dilimi bir aralıktır ama <b>aralık ölçeği değildir</b> — sıralıdır (dilim genişlikleri eşit değil).</div>
 
-<h2>3. Biçim, tür, yapı</h2>
+<h2>3. Biçim, tür, yapı</h2><div class="box tip"><span class="label">Çok basit düşün</span>CSV/JSON/metin gibi biçim ile kayıt/sepet/zaman serisi/graf gibi veri türünü birbirine karıştırma. İkisi farklı sınıflandırmalardır.</div>
 <p><b>Biçim:</b> yapılandırılmış (CSV, tablo) · yarı yapılandırılmış (JSON, XML, log) · yapılandırılmamış (metin, görüntü). <b>Veri kümesi türü:</b> kayıt · işlem (sepet) · sıralı (zaman serisi) · graf · metin. Bu iki eksen birbirinden bağımsızdır.</p>
 
 <h3>İkili öznitelikler</h3>
 <p><b>Simetrik:</b> iki cevap da eşit bilgi taşır (sigara içiyor mu?). <b>Asimetrik:</b> yalnızca "evet" bilgi taşır (200 bölümden hangisindesin? bu ürünü aldı mı?) → "ikisi de hayır" eşleşmesi sayılmaz.</p>
 
-<h2>4. Veri kalitesinin altı boyutu</h2>
+<h2>4. Veri kalitesinin altı boyutu</h2><div class="box tip"><span class="label">Çok basit düşün</span>Kaliteli veri sadece eksiksiz veri değildir. Doğruluk, bütünlük, tutarlılık, güncellik, inanılırlık ve yorumlanabilirlik birlikte düşünülür.</div>
 <div class="table-wrap"><table>
 <tr><th>Boyut</th><th>Belirti</th></tr>
 <tr><td>Doğruluk</td><td>Yaş = 999, negatif fiyat</td></tr>
@@ -153,7 +153,7 @@ export const WEEKS_1_6: Week[] = [
 <tr><td>Yorumlanabilirlik</td><td>Sütun adı <code>flag_2</code>, sözlük yok — <i>kurumsal</i></td></tr>
 </table></div>
 
-<h2>5. Özet istatistikler</h2>
+<h2>5. Özet istatistikler</h2><div class="box tip"><span class="label">Çok basit düşün</span>Önce dağılımı gör, sonra ölçü seç. Aykırı değer varsa ortalama yerine medyan daha güvenli olabilir. Q1, medyan, Q3 ve 1,5×ÇAA ile aykırı değer hesabını adım adım yap.</div>
 <p><b>Ortalama</b> aykırı değerden çok etkilenir; <b>medyan</b> dayanıklıdır (robust); <b>mod</b> kategorik veride tek seçenektir.</p>
 <details class="example" open><summary>Elle örnek: beş sayı özeti ve 1,5·ÇAA</summary><div class="inner">
 <p>11 harcama: 100 · 120 · 140 · 150 · 160 · 180 · 200 · 220 · 260 · 300 · 1500</p>
@@ -170,7 +170,7 @@ Alt sınır = 140 − 180 = −40     Üst sınır = 260 + 180 = 440
 <h3>Anscombe dörtlüsü (1973)</h3>
 <p>Dört veri kümesi: x ort. 9, y ort. 7,5, korelasyon 0,816, regresyon y = 3 + 0,5x — hepsi aynı. Ama I doğrusal, II eğri, III bir aykırı değer, IV tek nokta eğimi belirliyor. <b>Özet istatistik bir kısayoldur, kanıt değil — grafiğe bakın.</b></p>
 
-<h2>6. Uzaklık ölçüleri</h2>
+<h2>6. Uzaklık ölçüleri</h2><div class="box tip"><span class="label">Çok basit düşün</span>Öklid=kuş uçuşu, Manhattan=sağa-sola/yukarı-aşağı toplam yol, Chebyshev=en büyük tek fark. Uzaklık kullanıyorsan ölçeklerin sonucu ezip ezmediğini kontrol et.</div>
 <div class="table-wrap"><table>
 <tr><th>Ölçü</th><th>Hesap</th><th>x=(2,5), y=(6,8)</th></tr>
 <tr><td>Öklid (L2)</td><td>√Σ(farkların karesi)</td><td>√(16+9) = <b>5</b></td></tr>
@@ -187,7 +187,7 @@ Alt sınır = 140 − 180 = −40     Üst sınır = 260 + 180 = 440
 Z-skoru:   z  = (x − ortalama) / std          → ort. 0, std 1</div>
 <p>Min-maks tek bir aykırı değerle diğer herkesi 0'a sıkıştırır; z-skoru daha dayanıklıdır. <b>Normalize etmemek de bir tercihtir</b>: "yalnızca en geniş aralıklı sütunu ölç" demektir.</p>
 
-<h2>7. Sayısal olmayan veri</h2>
+<h2>7. Sayısal olmayan veri</h2><div class="box tip"><span class="label">Çok basit düşün</span>İki vektörde neyin önemli olduğuna karar ver: ikisinin de 0 olması önemli değilse Jaccard, iki durum da eşit derecede önemliyse SMC. Metinde uzunluk etkisini azaltmak için kosinüs kullan.</div>
 <p><b>Kosinüs benzerliği:</b> iki vektör arasındaki açının kosinüsü; <b>uzunluktan bağımsız</b> (100 kelimelik haber ile 5.000 kelimelik makale aynı konudaysa benzer). 1 aynı yön, 0 dik. Uzaklığa çevirmek için 1 − kosinüs.</p>
 <div class="formula">         Y=1  Y=0
 X=1       a    b
@@ -208,16 +208,16 @@ Hamming = b + c                        → farklı konum sayısı</div>
 <tr><td>Karışık</td><td>Gower</td></tr>
 </table></div>
 
-<h2>8. Korelasyon ≠ nedensellik</h2>
+<h2>8. Korelasyon ≠ nedensellik</h2><div class="box tip"><span class="label">Çok basit düşün</span>Korelasyon birlikte değişimi anlatır, sebebi değil. A→B, B→A veya gizli C→A+B olabilir. Sınavda 'ilişki var' ile 'neden oldu' ifadelerini ayır.</div>
 <p>Korelasyon iki <b>sütunu</b> karşılaştırır (uzaklık iki satırı); −1…+1. 0 = doğrusal ilişki yok (başka ilişki olabilir). Üç ihtimal: A→B, B→A, ya da <b>gizli değişken</b> C ikisine birden sebep (dondurma ↔ boğulma, sebep sıcak hava).</p>
 
-<h2>9. Hangi grafik?</h2>
+<h2>9. Hangi grafik?</h2><div class="box tip"><span class="label">Çok basit düşün</span>Tek sayısal dağılım→histogram, aykırı→kutu, iki sayısal ilişki→saçılım, zaman→çizgi, kategori karşılaştırma→çubuk.</div>
 <p>Histogram: tek sayısalın dağılımı · Kutu: aykırı değer · Saçılım: iki sayısal ilişki · Çubuk: kategorik karşılaştırma · Isı haritası: yoğun kombinasyon · Çizgi: zaman · Huni: aşamalı kayıp. Pasta yerine çubuk tercih edilir.</p>
 
-<h2>Vaka: Google Grip Eğilimleri</h2>
+<h2>Vaka: Google Grip Eğilimleri</h2><div class="box tip"><span class="label">Çok basit düşün</span>Bu bölümde önce tanımı öğren, sonra verilen örneği kapatıp kendin çöz. Son olarak formülün neyi ölçtüğünü ve benzer kavramlardan farkını kendi cümlenle söyle.</div>
 <p>GFT gribi değil <b>arama davranışını</b> ölçtü. Korku aramaları, kış terimleri ("kış dedektörü") ve mevsim dışı H1N1'i kaçırması → 2013'te CDC'nin iki katından fazla tahmin. Ders: <b>mekanizmasını bilmediğin korelasyon, koşullar değişince kırılır.</b></p>
 
-<h2>Tuzak köşesi</h2>
+<h2>Tuzak köşesi</h2><div class="box tip"><span class="label">Çok basit düşün</span>Bu bölümde önce tanımı öğren, sonra verilen örneği kapatıp kendin çöz. Son olarak formülün neyi ölçtüğünü ve benzer kavramlardan farkını kendi cümlenle söyle.</div>
 <div class="table-wrap"><table>
 <tr><th>Gördüğünüz</th><th>Eksik olan</th></tr>
 <tr><td>Posta kodu ortalaması</td><td>Ölçek türü — nominal veride ortalama yok, mod/frekans kullan</td></tr>
@@ -233,7 +233,7 @@ Hamming = b + c                        → farklı konum sayısı</div>
   short: "MCAR/MAR/MNAR, doldurma–silme, aykırı değer kuralları, ölçekleme, kodlama, ayrıklaştırma, Lasso, PCA, veri sızıntısı.",
   principle: "GIGO — Çöp girerse çöp çıkar. Modelin tavanını veri belirler, algoritma değil.",
   body: `
-<h2>1. Ön işlemenin dört işi</h2>
+<h2>1. Ön işlemenin dört işi</h2><div class="box tip"><span class="label">Çok basit düşün</span>Ön işleme dört iş yapar: temizle, bütünleştir, dönüştür, indirgeme yap. Modelden önce verinin gerçekten kullanılabilir olup olmadığını kontrol et.</div>
 <div class="table-wrap"><table>
 <tr><th>İş</th><th>Soru</th><th>Ne yapılır</th></tr>
 <tr><td>Temizleme</td><td>Güvenilir mi?</td><td>Eksik, gürültü, aykırı, tutarsızlık</td></tr>
@@ -242,7 +242,7 @@ Hamming = b + c                        → farklı konum sayısı</div>
 <tr><td>İndirgeme</td><td>Bu kadarı gerekli mi?</td><td>Örnekleme, öznitelik seçimi/çıkarımı</td></tr>
 </table></div>
 
-<h2>2. Eksik veri</h2>
+<h2>2. Eksik veri</h2><div class="box tip"><span class="label">Çok basit düşün</span>Önce eksikliğin nedenini düşün: MCAR=tesadüfi, MAR=gördüğün başka değişkene bağlı, MNAR=eksik değerin kendisine bağlı. Sonra silme/doldurma kararını ver.</div>
 <p>En tehlikeli eksik değer eksik gibi görünmeyendir: <b>0</b> (kan basıncı), <b>nöbetçi değer</b> (−1, 999), metin ("bilinmiyor"). İlk soru: <i>bu değer fiziksel olarak mümkün mü?</i> Değilse NaN yap.</p>
 <div class="table-wrap"><table>
 <tr><th>Mekanizma</th><th>Eksiklik neye bağlı?</th><th>Senaryo</th><th>Silmek?</th></tr>
@@ -269,7 +269,7 @@ Hamming = b + c                        → farklı konum sayısı</div>
 </table></div>
 <div class="box warn">Mekanizma orandan daha belirleyicidir: oran küçük olsa bile <b>MCAR değilse silme</b>. Karar sırası: mümkün mü? → neden eksik? → bilgi taşıyor mu? → oran+mekanizma+satır sayısı → ne yaptığını yaz.</div>
 
-<h2>3. Gürültü ve aykırı değer</h2>
+<h2>3. Gürültü ve aykırı değer</h2><div class="box tip"><span class="label">Çok basit düşün</span>Aykırı değer otomatik olarak silinecek hata değildir. Dolandırıcılıkta aykırı kayıt tam aradığımız şey olabilir; yanlış yazılmış fiyat ise temizlenmelidir.</div>
 <p><b>Gürültü</b> = ölçümdeki rastgele hata, yumuşatılır. <b>Aykırı değer</b> = uzakta duran gerçek gözlem, önce incelenir. Ayırt edici soru: tekrar ölçsen yine çıkar mı?</p>
 <details class="example"><summary>Binleme: 4 · 8 · 15 · 21 · 21 · 24 · 25 · 28 · 34 (3'erli)</summary><div class="inner">
 <div class="formula">Ortalamayla: 9,9,9 · 22,22,22 · 29,29,29
@@ -285,10 +285,10 @@ Sınırlarla:  4,4,15 · 21,21,24 · 25,25,34   (8 → |8−4|=4 < |8−15|=7 �
 <p><b>n mi n−1 mi?</b> n: popülasyon (σ); n−1: örneklem (s, Bessel düzeltmesi). numpy.std → n; pandas .std → n−1; sklearn StandardScaler → n. 1500 için n ile z = 3,13 (işaretlenir). Ölçeklemede fark etmez, eşikli kuralda fark eder.</p>
 <p><b>Aykırı değer bazen cevabın kendisidir:</b> dolandırıcılık, ağ saldırısı, arıza tespiti, en değerli müşteri → sakla. Yanlış girilmiş ev fiyatı → temizle.</p>
 
-<h2>4. Entegrasyon</h2>
+<h2>4. Entegrasyon</h2><div class="box tip"><span class="label">Çok basit düşün</span>Farklı kaynaklardaki aynı kişiyi, birimi ve sütun adını aynı dile çevir. 'Ahmet Yılmaz' ve 'A. Yılmaz' aynı kişiyse bunu çözmeden model kurma.</div>
 <p>Şema eşleme (musteri_id ↔ cust_no, kg ↔ lb) · varlık çözümleme ("Ahmet Yılmaz" / "A. Yılmaz") · mükerrer kayıt (müşteriyi iki kez öğretir). <b>Artıklık:</b> doğum tarihi–yaş, fiyat×adet=toplam; |r| ≈ 0,95 → neredeyse aynı bilgi. Atmadan önce saçılıma bak.</p>
 
-<h2>5. Dönüştürme</h2>
+<h2>5. Dönüştürme</h2><div class="box tip"><span class="label">Çok basit düşün</span>Ölçekleme sayıları karşılaştırılabilir hale getirir; log dönüşümü dağılımın şeklini değiştirir; one-hot nominal kategoriyi sütunlara çevirir. Hangi dönüşümün neyi değiştirdiğini ayır.</div>
 <details class="example" open><summary>Dört ölçekleme, aynı beş sayı: 1200 · 2100 · 2600 · 3400 · 5200</summary><div class="inner">
 <p>ortalama 2900 · s 1513,27 · medyan 2600 · Q1 2100 · Q3 3400 · ÇAA 1300</p>
 <div class="table-wrap"><table>
@@ -321,7 +321,7 @@ Denetimli (entropi): 21–30 · 30–78                      → hedefe bakar, s
 </div></details>
 <p><b>Kavram hiyerarşisi:</b> Kadıköy → İstanbul → Marmara → Türkiye. Yukarı çıktıkça gürültü azalır, ayrıntı kaybolur (Hafta 4'te roll-up / drill-down).</p>
 
-<h2>6. İndirgeme</h2>
+<h2>6. İndirgeme</h2><div class="box tip"><span class="label">Çok basit düşün</span>Daha az veri her zaman daha kötü değildir. Gereksiz satırları veya sütunları azaltırken nadir sınıfı ve önemli bilgiyi kaybetmemeye dikkat et.</div>
 <p><b>Satır:</b> basit rastgele · <b>tabakalı</b> (nadir sınıf oranını korur) · sistematik.</p>
 <p><b>Seçim ↔ çıkarım:</b> seçimde sonuç sütununun adını söyleyebilirsin (yaş, gelir); çıkarımda söyleyemezsin (bileşen-1).</p>
 <div class="table-wrap"><table>
@@ -339,7 +339,7 @@ Ridge: min Σ(y − ŷ)² + λ · Σβ²      → küçültür ama sıfırlamaz<
 <p><b>Genetik algoritma:</b> birey = 0/1 sütun dizisi; döngü: başlangıç → değerlendir → seç → çaprazla → mutasyon → tekrarla. Mutasyon kapalı kapıları açar. Uygunluk = başarı − ceza × sütun sayısı.</p>
 <p><b>PCA:</b> verinin en çok yayıldığı yönü 1. eksen yapar. Ölçeklemeye duyarlı, bileşenler yorumlanamaz, <b>hedefe bakmaz</b>.</p>
 
-<h2>7. 🔴 Veri sızıntısı</h2>
+<h2>7. 🔴 Veri sızıntısı</h2><div class="box tip"><span class="label">Çok basit düşün</span>Altın kural: model eğitim sırasında gerçek hayatta sahip olmayacağı bilgiyi görmemeli. Önce böl, sonra sadece eğitimden öğren, aynı dönüşümü teste uygula.</div>
 <div class="box key"><span class="label">Tanım</span>Modelin eğitimde, gerçek hayatta elinde olmayacak bir bilgiye erişmesi. Test skoru muhteşem, saha çöker, hata mesajı yok.</div>
 <ol>
 <li><b>Bölmeden önce ön işleme</b> (ölçekleyici/doldurma tüm veriye fit edilmiş)</li>
@@ -350,10 +350,10 @@ Ridge: min Σ(y − ŷ)² + λ · Σβ²      → küçültür ama sıfırlamaz<
 <p>Bölmeden önce güvenli olanlar: birim çevirme, yazım düzeltme, mükerrer silme, imkânsız değeri NaN yapma (satır bazlı, istatistik öğrenmeyen işlemler).</p>
 <p><b>Kanıt:</b> 100 kayıt × 5000 rastgele öznitelik, yazı-tura hedef. Seçim tüm veride yapılırsa çapraz doğrulama <b>%81</b>; seçim Pipeline içinde her katlamada yapılırsa <b>%52</b>. Hedefe bakan işlem (seçici, hedef kodlama, denetimli ayrıklaştırma) çok daha tehlikelidir.</p>
 
-<h2>Pima diyabet örneği</h2>
+<h2>Pima diyabet örneği</h2><div class="box tip"><span class="label">Çok basit düşün</span>Gerçek veri örneğinde önce '0 gerçekten 0 mı?' diye sor. Fiziksel olarak mümkün olmayan sıfırlar eksik veri olabilir ve her sütun için aynı doldurma yöntemi doğru olmayabilir.</div>
 <p>768 kayıt. Sıfırlar: gebelik %14,5 (mümkün ✓) · glikoz %0,7 · kan basıncı %4,6 · deri kalınlığı %29,6 · insülin %48,7 (hepsi imkânsız ✗). Glikoz → sil; deri → doldur; insülin → <b>doldur + gösterge</b>.</p>
 
-<h2>Vaka: Zillow Offers</h2>
+<h2>Vaka: Zillow Offers</h2><div class="box tip"><span class="label">Çok basit düşün</span>Model geçmiş dönemde iyi çalışsa bile dünya değişirse bozulabilir. Eğitim verisinin gerçek hayattaki koşulları temsil edip etmediğini kontrol et.</div>
 <p>2018'de yaygınlaşan iBuying modeli: Zillow, Zestimate fiyat tahminine dayanarak evi alıp onarıp yeniden satıyordu. 2020–2021'de pandemiyle piyasa, modelin eğitildiği döneme benzemez hâle geldi ve tahminler sahada tutmadı; program kapatıldı. Ders: modelin tavanını verinin temsil ettiği koşullar belirler.</p>
 `
 },
@@ -363,10 +363,10 @@ Ridge: min Σ(y − ŷ)² + λ · Σβ²      → küçültür ama sıfırlamaz<
   short: "OLTP ↔ OLAP, Inmon'un dört sıfatı, ETL/ELT, SCD tipleri, olgu–boyut, tane, yıldız/kar tanesi, küp işlemleri, 2ⁿ.",
   principle: "Aynı veri, farklı soru, farklı şema. Şemayı veri değil, soracağınız soru belirler.",
   body: `
-<h2>1. Neden ayrı depo?</h2>
+<h2>1. Neden ayrı depo?</h2><div class="box tip"><span class="label">Çok basit düşün</span>OLTP günlük işlemleri hızlı yapmak içindir; veri ambarı geçmişi analiz etmek içindir. Aynı sistemi iki amaç için zorlamak performans ve tarihsel veri problemi yaratır.</div>
 <p>Rapor işlemsel veritabanında çalışınca üç sorun: <b>yavaş</b> (çok join), <b>engelliyor</b> (rezervasyon alınamıyor), <b>eksik</b> (silinmiş otelin geçmişi yok — en sinsisi, çünkü yanlışlıktır). Çözüm: ayrı kopya + analize uygun şema + geçmiş silinmez = <b>veri ambarı</b>.</p>
 
-<h2>2. OLTP ↔ OLAP</h2>
+<h2>2. OLTP ↔ OLAP</h2><div class="box tip"><span class="label">Çok basit düşün</span>OLTP=işlemi yap, OLAP=veriyi analiz et. INSERT/UPDATE/DELETE ve kısa sorgular OLTP; uzun SELECT'ler, geçmiş ve toplulaştırma OLAP.</div>
 <div class="table-wrap"><table>
 <tr><th>Ölçüt</th><th>OLTP (işlemsel)</th><th>OLAP (analitik)</th></tr>
 <tr><td>Amaç</td><td>Günlük işi yürütmek</td><td>Karara yardım</td></tr>
@@ -380,7 +380,7 @@ Ridge: min Σ(y − ŷ)² + λ · Σβ²      → küçültür ama sıfırlamaz<
 </table></div>
 <p>"Beş yıl önce kapanan şubenin cirosu" → <b>yalnızca OLAP</b>; OLTP'de veri artık yok.</p>
 
-<h2>3. Inmon'un dört sıfatı</h2>
+<h2>3. Inmon'un dört sıfatı</h2><div class="box tip"><span class="label">Çok basit düşün</span>Veri ambarının dört kelimesini mantığıyla öğren: konu odaklı, bütünleşik, zamana bağlı, değişmez.</div>
 <div class="table-wrap"><table>
 <tr><th>Sıfat</th><th>Anlamı</th></tr>
 <tr><td>Konu odaklı</td><td>Konulara göre (müşteri, satış), iş adımlarına göre değil</td></tr>
@@ -389,7 +389,7 @@ Ridge: min Σ(y − ŷ)² + λ · Σβ²      → küçültür ama sıfırlamaz<
 <tr><td>Değişmez</td><td>Giren veri normalde değiştirilmez/silinmez; yeni bilgi yeni satır (istisna: SCD Tip 1 düzeltmesi, yasal silme/anonimleştirme)</td></tr>
 </table></div>
 
-<h2>4. Mimari ve ETL</h2>
+<h2>4. Mimari ve ETL</h2><div class="box tip"><span class="label">Çok basit düşün</span>Kaynak sistemden gelen veriyi staging'de hazırlayıp ambara taşı. ETL'de dönüştürme önce, ELT'de ambarın içinde yapılır.</div>
 <div class="formula">Kaynak (OLTP) → Hazırlama alanı (staging) → Veri ambarı → Veri pazarları → Sunum (Power BI)</div>
 <p><b>Staging</b> neden var: kaynak hemen serbest kalır; ambar yarım veriyle kirlenmez; dağınık kaynaklar toplanır. <b>Veri pazarı</b> (data mart): bir birimin kendi alt kümesi. Ambar = tek doğruluk kaynağı.</p>
 <div class="table-wrap"><table>
@@ -400,7 +400,7 @@ Ridge: min Σ(y − ŷ)² + λ · Σβ²      → küçültür ama sıfırlamaz<
 </table></div>
 <p>ETL'deki <b>T</b> adımı Hafta 3'ün (ön işleme) ta kendisidir.</p>
 
-<h2>5. Yavaş değişen boyutlar (SCD)</h2>
+<h2>5. Yavaş değişen boyutlar (SCD)</h2><div class="box tip"><span class="label">Çok basit düşün</span>Müşteri İstanbul'dan Ankara'ya taşındığında geçmiş satışların Ankara'ya dönüşmesini istemiyorsan Tip 2 gerekir. Yazım hatası gibi hiç doğru olmayan eski değeri düzeltmek için Tip 1 kullan.</div>
 <p>Müşteri 8412: 2019'dan beri İstanbul, 1 Haziran 2026'da Ankara'ya taşındı. 2024'te 40.000 TL harcadı.</p>
 <div class="table-wrap"><table>
 <tr><th>Tip</th><th>Ne yapılır</th><th>Sonuç</th></tr>
@@ -410,7 +410,7 @@ Ridge: min Σ(y − ŷ)² + λ · Σβ²      → küçültür ama sıfırlamaz<
 </table></div>
 <div class="box key"><span class="label">Ayırt edici soru</span>"Eski değer o zaman doğru muydu?" Doğruysa → <b>Tip 2</b> (taşınma, kategori yeniden tanımı). Hiç doğru değildiyse → <b>Tip 1</b> (yazım hatası düzeltmesi).</div>
 
-<h2>6. Boyutsal modelleme (Kimball)</h2>
+<h2>6. Boyutsal modelleme (Kimball)</h2><div class="box tip"><span class="label">Çok basit düşün</span>Olgu='ne oldu ve ne kadar?', boyut='kim/ne/nerede/ne zaman?'. Önce grain'i, yani bir satırın tam olarak neyi temsil ettiğini yaz.</div>
 <div class="table-wrap"><table>
 <tr><th></th><th>Olgu (fact)</th><th>Boyut (dimension)</th></tr>
 <tr><td>Kaydeder</td><td>Olayı (satış, rezervasyon)</td><td>Bağlamı (kim, ne, nerede, ne zaman)</td></tr>
@@ -430,7 +430,7 @@ Ridge: min Σ(y − ŷ)² + λ · Σβ²      → küçültür ama sıfırlamaz<
 <p><b>Vekil anahtar</b> (surrogate, musteri_sk): ambarın sıra numarası, kişinin bir dönemdeki hâli. <b>İş anahtarı</b> (natural, musteri_id): değişmez. Olgu <b>sk'ya</b> bağlanır.</p>
 <p><b>Neden bilerek denormalize?</b> 2 milyon satırda yıldız 0,071 sn, kar tanesi 0,152 sn; normalizasyon yalnızca 69 KB kazandırdı. Güncelleme anomalisi ambarda sorun değil: ambar güncellenmez, boyuta yalnızca ETL yazar, değişiklik yeni satırdır.</p>
 
-<h2>7. Veri küpü ve OLAP işlemleri</h2>
+<h2>7. Veri küpü ve OLAP işlemleri</h2><div class="box tip"><span class="label">Çok basit düşün</span>Roll-up ayrıntıyı azaltır, drill-down ayrıntıyı artırır, slice tek boyut seçer, dice birden fazla boyut seçer, pivot eksenleri döndürür.</div>
 <details class="example" open><summary>12 hücrelik küp: 3 ay × 2 şehir × 2 oda tipi</summary><div class="inner">
 <div class="table-wrap"><table>
 <tr><th>Ay</th><th>İst Std</th><th>İst Suit</th><th>İzm Std</th><th>İzm Suit</th><th>Toplam</th></tr>
@@ -460,7 +460,7 @@ Ridge: min Σ(y − ŷ)² + λ · Σβ²      → küçültür ama sıfırlamaz<
 </table></div>
 <p>Power BI <b>Import</b> ≈ MOLAP, <b>DirectQuery</b> ≈ ROLAP.</p>
 
-<h2>8. Ambar · göl · göl-evi</h2>
+<h2>8. Ambar · göl · göl-evi</h2><div class="box tip"><span class="label">Çok basit düşün</span>Ambar temiz ve şeması belli veriyi, göl ham veriyi saklar. Göl-evi ikisini birleştirmeye çalışır; katalog ve sahiplik yoksa göl veri bataklığına dönüşebilir.</div>
 <div class="table-wrap"><table>
 <tr><th></th><th>Şema ne zaman?</th><th>Ne saklar?</th></tr>
 <tr><td>Ambar</td><td>Yazılırken (schema-on-write)</td><td>Temizlenmiş tablolar</td></tr>
@@ -470,7 +470,7 @@ Ridge: min Σ(y − ŷ)² + λ · Σβ²      → küçültür ama sıfırlamaz<
 <p>Kataloglama ve sahiplik yoksa göl <b>veri bataklığına</b> döner.</p>
 <div class="box tip"><span class="label">Neden model öncesi ambar?</span>Herkes aynı tabloya bakar · tarihsel derinlik · SCD Tip 2 zaman damgaları sızıntıya karşı savunma · roll-up/drill-down ile keşif.</div>
 
-<h2>Vaka: Walmart, kasırga ve Pop-Tarts</h2>
+<h2>Vaka: Walmart, kasırga ve Pop-Tarts</h2><div class="box tip"><span class="label">Çok basit düşün</span>OLAP'ın gücünü gerçek hayattan düşün: geçmiş satışları sorgulayarak kasırga öncesi hangi ürünlerin arttığını bulmak ve stok kararını önceden vermek.</div>
 <p>Eylül 2004, Frances Kasırgası yaklaşırken Walmart, haftalar önceki Charley Kasırgası sırasındaki satışları ambarda sorguladı: kasırga öncesi çilekli Pop-Tarts satışı normalin ~7 katı, en çok satan ürün bira. Mağazalara önceden sevk edildi. Ders: geçmiş OLTP'de silinmiş olsaydı soru sorulamazdı (değişmezlik, zamana bağlılık).</p>
 `
 },
@@ -480,7 +480,7 @@ Ridge: min Σ(y − ŷ)² + λ · Σβ²      → küçültür ama sıfırlamaz<
   short: "Destek, güven, lift, null-invariance, Apriori elle, kural üretme, FP-Growth, ECLAT, kapalı/maksimal kümeler.",
   principle: "Sık olan ilginç değildir. Yüksek destek ve güven kuralın işe yaradığını göstermez — lift'e bakın.",
   body: `
-<h2>1. Temel fikir</h2>
+<h2>1. Temel fikir</h2><div class="box tip"><span class="label">Çok basit düşün</span>Birliktelik kuralı 'A alan B'yi de alma eğiliminde mi?' sorusudur; neden-sonuç iddiası değildir. Sepette adet değil ürünün bulunup bulunmaması önemlidir.</div>
 <p>Denetimsiz: hedef sütun yok. "X → Y" = X'i alanlar Y'yi de alma eğiliminde; <b>nedensellik değildir</b>. Sepette adet önemsiz, yalnızca var/yok.</p>
 <details class="example" open><summary>Haftanın verisi: 8 sepet</summary><div class="inner">
 <div class="table-wrap"><table>
@@ -497,7 +497,7 @@ Ridge: min Σ(y − ŷ)² + λ · Σβ²      → küçültür ama sıfırlamaz<
 <p>Sayılar: Ekmek 7 · Peynir 5 · Süt 5 · Zeytin 4 · Yumurta 3 · Çay 1</p>
 </div></details>
 
-<h2>2. Üç ölçü</h2>
+<h2>2. Üç ölçü</h2><div class="box tip"><span class="label">Çok basit düşün</span>Destek tüm sepetlere bakar, güven öncülü alanlara bakar, lift ise güveni sonucun genel yaygınlığıyla karşılaştırır. Üçünü aynı örnekte hesapla.</div>
 <div class="formula">destek(X → Y) = sayı(X ∪ Y) / N                  (yön bilmez)
 güven(X → Y)  = sayı(X ∪ Y) / sayı(X) = P(Y|X)    (yön bilir)
 lift(X → Y)   = güven / destek(Y)
@@ -522,14 +522,14 @@ lift(X → Y)   = güven / destek(Y)
 </table></div>
 <div class="box key"><span class="label">Null-invariance</span>8 sepete yalnızca su içeren 92 sepet eklenince Peynir → Ekmek lift'i 0,91'den <b>11,43</b>'e fırlar; güven, Kulczynski ve kosinüs değişmez. <b>Kulczynski ve kosinüs null-invariant</b>; lift ve leverage değil. Lift nadir ürünlerde birlikteliği abartır.</div>
 
-<h2>3. Problem büyüklüğü</h2>
+<h2>3. Problem büyüklüğü</h2><div class="box tip"><span class="label">Çok basit düşün</span>Ürün sayısı arttıkça olası kümeler üstel büyür. Apriori'nin adayları azaltmaya çalışmasının nedeni tam olarak bu patlamadır.</div>
 <div class="formula">öğe kümesi sayısı = 2ᵈ − 1        kural sayısı = 3ᵈ − 2ᵈ⁺¹ + 1
 d = 6 → 63 küme, 602 kural       d = 20 → 1.048.575 küme, ≈ 3,5 milyar kural</div>
 
-<h2>4. Apriori ilkesi</h2>
+<h2>4. Apriori ilkesi</h2><div class="box tip"><span class="label">Çok basit düşün</span>Bir küme seyrekse onu içeren daha büyük kümeler de seyrektir. Bu bilgi sayesinde sayılmayacak adayları daha baştan budarız.</div>
 <div class="box key">Bir küme seyrekse, onu içeren her küme de seyrektir (<b>anti-monotonluk</b>: küme büyüdükçe destek artmaz). Ters yönü çalışmaz: tüm alt kümeleri sık olan bir küme seyrek olabilir — {Ekmek, Süt, Zeytin}.</div>
 
-<h2>5. Apriori elle (min_sup = 2)</h2>
+<h2>5. Apriori elle (min_sup = 2)</h2><div class="box tip"><span class="label">Çok basit düşün</span>Her turda aynı mantığı uygula: adayları üret → minimum desteği kontrol et → seyrekleri ele → kalanlarla sonraki turu üret.</div>
 <details class="example" open><summary>Turlar</summary><div class="inner">
 <p><b>1. tur:</b> Çay (1) elenir → L₁ = {Ekmek, Peynir, Süt, Yumurta, Zeytin}.</p>
 <p><b>2. tur:</b> 5·4/2 = 10 aday. Elenen: Peynir-Yumurta (0), Yumurta-Zeytin (0). Süt-Yumurta (2) ve Süt-Zeytin (2) tam eşikte geçer → <b>L₂ = 8</b>.</p>
@@ -538,7 +538,7 @@ d = 6 → 63 küme, 602 kural       d = 20 → 1.048.575 küme, ≈ 3,5 milyar k
 <p><b>Bilanço:</b> 17 sık küme (5+8+4), 3 veritabanı taraması. Bu veride C₄ budamayla boşaldığı için 3 tarama yeter; genelde sayılacak aday kaldıysa k+1. tarama gerekir.</p>
 </div></details>
 
-<h2>6. Kural üretme</h2>
+<h2>6. Kural üretme</h2><div class="box tip"><span class="label">Çok basit düşün</span>Sık bir kümeden farklı X→Y yönleri üret. Güveni hesapla; eşik geçerse lift ile gerçekten anlamlı mı kontrol et.</div>
 <p>k öğeli kümeden <b>2ᵏ − 2</b> kural. Destek hesaplanmaz (küme zaten sık), yalnızca güven: pay sabit, payda değişir.</p>
 <div class="table-wrap"><table>
 <tr><th>{Ekmek, Peynir, Zeytin} (3 sepet)</th><th>Güven</th><th>Karar</th><th>Lift</th></tr>
@@ -551,7 +551,7 @@ d = 6 → 63 küme, 602 kural       d = 20 → 1.048.575 küme, ≈ 3,5 milyar k
 </table></div>
 <p>Öncülden sonuca öğe taşıdıkça güven <b>artamaz</b> → kural üretmede budama. 17 sık kümeden 40 aday kural, 20'si güven eşiğini geçer, bunların <b>7'sinin lift'i &lt; 1</b> (çoğunun sonucu Ekmek). Groceries verisinde güvene göre ilk 10 kuralın 8'inin sonucu <i>whole milk</i>; lift'e göre hiçbiri.</p>
 
-<h2>7. FP-Growth ve ECLAT</h2>
+<h2>7. FP-Growth ve ECLAT</h2><div class="box tip"><span class="label">Çok basit düşün</span>Apriori aday aday üretirken FP-Growth veriyi sıkıştırıp aday üretmeden çalışır. ECLAT ise öğelerin hangi sepetlerde bulunduğunu tutup kümelerin kesişimini kullanır.</div>
 <div class="table-wrap"><table>
 <tr><th></th><th>Apriori</th><th>FP-Growth</th><th>ECLAT</th></tr>
 <tr><td>Tarama</td><td>Tur başına 1 tarama</td><td><b>2</b></td><td>1 (dikey gösterime çevirirken)</td></tr>
@@ -562,7 +562,7 @@ d = 6 → 63 küme, 602 kural       d = 20 → 1.048.575 küme, ≈ 3,5 milyar k
 <p>FP-Growth (Han, Pei, Yin 2000): 1. taramada sayar, sepetleri sıklığa göre sıralar; 2. taramada ağaca ekler. 8 sepetteki 24 öğe 11 düğüme sığdı. En seyrek öğeden başlayıp <b>koşullu desen tabanı</b> çıkarılır: Yumurta → {Ekmek, Süt}:2, {Ekmek}:1. Üçü de aynı sık kümeleri bulur.</p>
 <p>Apriori: Agrawal &amp; Srikant, 1994.</p>
 
-<h2>8. Kapalı ve maksimal kümeler</h2>
+<h2>8. Kapalı ve maksimal kümeler</h2><div class="box tip"><span class="label">Çok basit düşün</span>Kapalı küme: üst kümesi aynı desteğe sahip değil. Maksimal küme: üst kümesi artık sık değil. Kapalı bilgi kaybetmeden sıkıştırır; maksimal daha kısa ama sayıları kaybedebilir.</div>
 <div class="table-wrap"><table>
 <tr><th></th><th>Tanım</th><th>Bu veride</th></tr>
 <tr><td><b>Kapalı</b></td><td>Hiçbir üst kümesi <i>aynı sayıya</i> sahip değil</td><td>12 ({Zeytin}=4={Peynir,Zeytin} → kapalı değil)</td></tr>
@@ -570,7 +570,7 @@ d = 6 → 63 küme, 602 kural       d = 20 → 1.048.575 küme, ≈ 3,5 milyar k
 </table></div>
 <p>Kapalı kümeler <b>kayıpsız</b> sıkıştırır (sayılar korunur); maksimal daha kısa ama sayıları kaybeder. Kural madenciliğinde kapalı tercih edilir.</p>
 
-<h2>9. Kural türleri</h2>
+<h2>9. Kural türleri</h2><div class="box tip"><span class="label">Çok basit düşün</span>Kuralı sadece ürün→ürün diye düşünme: çok düzeyli, çok boyutlu ve sayısal kurallar da vardır.</div>
 <p><b>Çok düzeyli:</b> hiyerarşide alt düzeyde destek düşük → <i>reduced support</i>. Alt düzey kural ancak üst düzeyden beklenenden farklıysa ilginç. <b>Çok boyutlu:</b> yaş = "20–29" ∧ meslek = "öğrenci" → dizüstü. <b>Sayısal öznitelikler</b> önce ayrıklaştırılır (Hafta 3).</p>
 `
 },
@@ -580,7 +580,7 @@ d = 6 → 63 küme, 602 kural       d = 20 → 1.048.575 küme, ≈ 3,5 milyar k
   short: "Denetimli öğrenme, eğitim/doğrulama/test, Gini, entropi, bilgi kazancı, kazanç oranı, aşırı öğrenme, budama.",
   principle: "Occam'ın usturası. Aynı veriyi açıklayan iki modelden basit olanı tercih edilir.",
   body: `
-<h2>1. Sınıflandırmaya giriş</h2>
+<h2>1. Sınıflandırmaya giriş</h2><div class="box tip"><span class="label">Çok basit düşün</span>Hedef kategori ise sınıflandırmadır. Eğitim modelin öğrendiği, doğrulama ayar seçtiğin, test ise en son dokunduğun veri olmalı.</div>
 <p><b>Denetimli</b>: hedef sütun var (sınıflandırma = kategori, regresyon = sayı). <b>Denetimsiz</b>: hedef yok (birliktelik, kümeleme).</p>
 <div class="table-wrap"><table>
 <tr><th>Küme</th><th>Görevi</th></tr>
@@ -589,7 +589,7 @@ d = 6 → 63 küme, 602 kural       d = 20 → 1.048.575 küme, ≈ 3,5 milyar k
 <tr><td>Test</td><td>En sonda, <b>bir kez</b>. Teste bakıp model değiştirmek = sızıntı</td></tr>
 </table></div>
 
-<h2>2. Karar ağacı</h2>
+<h2>2. Karar ağacı</h2><div class="box tip"><span class="label">Çok basit düşün</span>Karar ağacını bir soru-cevap oyunu gibi düşün: kökte ilk soru, dallarda cevaplar, yaprakta karar vardır.</div>
 <p>Kök (ilk soru) · iç düğüm (ara soru) · dal (cevap) · yaprak (karar/sınıf).</p>
 <div class="box tip"><span class="label">Neden ilk yöntem?</span>1) Yorumlanabilir (EĞER…İSE kurallarına çevrilir) 2) Ölçeklemeye duyarsız 3) Kategorik + sayısal birlikte 4) Öznitelik seçimini kendisi yapar. Bedeli: kolay ezberler, küçük değişiklikte bambaşka ağaç çıkar.</div>
 <p><b>Hunt algoritması (1966):</b> özyinelemeli — hepsi aynı sınıfsa yaprak; durdurma koşulu sağlandıysa çoğunluk sınıfı; değilse en iyi bölmeyi seç, ikiye ayır, her parçaya aynı tarifi uygula.</p>
@@ -600,7 +600,7 @@ d = 6 → 63 küme, 602 kural       d = 20 → 1.048.575 küme, ≈ 3,5 milyar k
 <tr><td>C4.5</td><td>1993</td><td>Kazanç oranı · sayısal öznitelik ve eksik değer</td></tr>
 </table></div>
 
-<h2>3. Gini</h2>
+<h2>3. Gini</h2><div class="box tip"><span class="label">Çok basit düşün</span>Gini düğümün ne kadar karışık olduğunu ölçer. En iyi bölme, ağırlıklı Gini'yi en çok azaltan bölmedir.</div>
 <div class="formula">Gini = 1 − Σ pᵢ²
 Gini(bölme) = (n_sol/n)·Gini(sol) + (n_sağ/n)·Gini(sağ)
 azalma = Gini(ebeveyn) − Gini(bölme)        → en büyük azalma seçilir</div>
@@ -642,7 +642,7 @@ EĞER Kilo > 60 VE Boy ≠ Uzun       İSE M</div>
 <p>Cinsiyet hiçbir kuralda yok → ağaç öznitelik seçimini kendisi yaptı. Yeni müşteri E · Orta · 61 kg → <b>M</b>.</p>
 </div></details>
 
-<h2>4. Entropi ve bilgi kazancı</h2>
+<h2>4. Entropi ve bilgi kazancı</h2><div class="box tip"><span class="label">Çok basit düşün</span>Entropi de karışıklığı ölçer. Bilgi kazancı, bölmeden sonra karışıklığın ne kadar azaldığını söyler.</div>
 <div class="formula">Entropi = − Σ pᵢ · log₂ pᵢ          (birim: bit; log₂x = ln x / ln 2)
 Bilgi kazancı(A) = Entropi(ebeveyn) − Σ (nᵥ/n)·Entropi(v)</div>
 <p>4–0 → 0 · 5–5 → 1 · 9 Evet–5 Hayır → <b>0,940</b>.</p>
@@ -660,7 +660,7 @@ Kazanç(Hava) = 0,940 − 0,694 ≈ 0,247 (yuvarlanmamış değerlerle)</div>
 <p>İki ölçüt de Hava'yı seçer; sıralama aynı.</p>
 </div></details>
 
-<h2>5. "Gün" tuzağı ve kazanç oranı (C4.5)</h2>
+<h2>5. "Gün" tuzağı ve kazanç oranı (C4.5)</h2><div class="box tip"><span class="label">Çok basit düşün</span>Çok fazla farklı değer içeren bir sütun herkesi ayrı dala ayırıp yapay şekilde iyi görünebilir. Kazanç oranı bu yanlılığı azaltır.</div>
 <p>Her kayda ayrı değer veren "Gün" sütunu her dalı saf yapar → kazanç 0,940 (en büyük), ama genellenemez. ID3 çok değerli özniteliklere yanlıdır.</p>
 <div class="formula">Bölme bilgisi(A) = − Σ (nᵥ/n) · log₂(nᵥ/n)
 Kazanç oranı(A)  = Bilgi kazancı(A) / Bölme bilgisi(A)</div>
@@ -673,7 +673,7 @@ Kazanç oranı(A)  = Bilgi kazancı(A) / Bölme bilgisi(A)</div>
 <div class="box warn">Kazanç oranı Gün'ü cezalandırdı ama Gün <b>yine kazandı</b>. Düzeltme yanlılığı azaltır, yok etmez. Asıl çözüm: kimlik sütunlarını modelden önce atmak.</div>
 <p><b>Gini mi entropi mi?</b> Eğriler neredeyse aynı, çoğu düğümde aynı bölmeyi seçerler. Gini log hesaplamadığı için daha hızlı.</p>
 
-<h2>6. Aşırı öğrenme</h2>
+<h2>6. Aşırı öğrenme</h2><div class="box tip"><span class="label">Çok basit düşün</span>Eğitimde %100 başarı tek başına iyi değildir. Model ezberliyorsa eğitim yüksek, doğrulama/test daha düşük olur. Budama modeli sadeleştirir.</div>
 <p>Derin ağaç gürültüyü de öğrenir: 500 kayıtlık gürültülü veride derinlik 2'de eğitim %88,6 / doğrulama <b>%84,6</b> (en iyi); sınırsız ağaçta eğitim %100 / doğrulama %81,0. <b>Eğitim doğruluğu modelin iyi olduğunu söylemez.</b></p>
 <h3>Ön budama (erken dur)</h3>
 <p><code>max_depth</code> · <code>min_samples_split</code> · <code>min_samples_leaf</code> · <code>min_impurity_decrease</code>. Değer doğrulama verisinde seçilir.</p>
@@ -684,7 +684,7 @@ Kazanç oranı(A)  = Bilgi kazancı(A) / Bölme bilgisi(A)</div>
 <p>Meme kanseri verisinde: α=0 → 16 yaprak, doğrulama %93,5; α=0,009 → 5 yaprak, doğrulama <b>%94,3</b> (seçilen). Test sütununa bakıp seçmek sızıntı olurdu.</p>
 <p><b>Kural sadeleştirme:</b> "Kilo &gt; 60 VE Kilo &gt; 65 VE Boy = Uzun → L" → "Boy = Uzun → L". Kurallar çakışabilir; C4.5 sıraya koyar ve varsayılan sınıf belirler.</p>
 
-<h2>7. Zayıflıklar</h2>
+<h2>7. Zayıflıklar</h2><div class="box tip"><span class="label">Çok basit düşün</span>Ağaçların basamaklı sınır ve kararsızlık gibi sorunlarını bil. Bir örnek değişince ağacın tamamen değişmesi varyans problemidir.</div>
 <p><b>Merdiven sınırlar:</b> her düğüm tek özniteliğe sorar (dikey/yatay çizgi); "Kilo &gt; Boy − 100" gibi çapraz sınır basamaklarla taklit edilir. Çözüm: <code>Kilo − Boy</code> özniteliğini üret.</p>
 <p><b>Kararsızlık:</b> 13. müşteri (K · Kısa · 56 kg · M) eklenince kök Boy = Uzun'a döner, derinlik 2'den 4'e çıkar, tek müşterilik yapraklar oluşur. Çözüm Hafta 7: rastgele orman.</p>
 <p><b>Eksik değer (C4.5):</b> kaydı ağırlıklarla dallara böler (5/13, 4/13, 4/13); kazanç bilinen kayıt oranıyla (13/14) çarpılır.</p>
