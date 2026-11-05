@@ -7,7 +7,7 @@ export const WEEK7: Week = {
   short: "SSE ile regresyon ağacı, en zayıf halka, vekil bölme, sınıf ağırlığı, öznitelik önemi, yanlılık-varyans, bagging, orman, boosting.",
   principle: "Kalabalığın bilgeliği, hatalar bağımsızsa işe yarar. Topluluğun gücü doğruluktan değil, çeşitlilikten gelir.",
   body: `
-<h2>1. CART: aileden üçüncü algoritma</h2>
+<h2>1. CART: aileden üçüncü algoritma</h2><div class="box tip"><span class="label">Çok basit düşün</span>CART'ı iki iş yapan karar ağacı olarak düşün: kategori tahmini ve sayı tahmini. Kategori için Gini, sayı için SSE kullanır.</div>
 <p><b>CART</b> = Classification And Regression Trees (Breiman, Friedman, Olshen, Stone, 1984). Adı iki işi de yaptığını söyler: kategori de, sayı da tahmin eder. scikit-learn'deki <code>DecisionTreeClassifier</code> ve <code>DecisionTreeRegressor</code> CART'ın uygulamasıdır.</p>
 <div class="table-wrap"><table>
 <tr><th></th><th>ID3 (1986)</th><th>C4.5 (1993)</th><th>CART (1984)</th></tr>
@@ -21,7 +21,7 @@ export const WEEK7: Week = {
 <div class="box warn"><span class="label">İki ayrı şey</span><b>Öznitelik</b> soru sorduğumuz sütun (Kilo, Hava), <b>hedef</b> tahmin ettiğimiz sütundur (Beden, fiyat). Bu haftanın yeniliği hedefin sayı olması: ev fiyatını yalnızca CART tahmin edebilir.</div>
 <p><b>Aynı veri, üç algoritma:</b> 14 günlük Hava verisinde ID3 (kazanç 0,247) ve C4.5 (oran 0,156) kökte Hava'yı seçip üç dal açar. CART ikili sorar: <b>Hava = Bulutlu?</b> (ağırlıklı Gini 0,357, azalma 0,102). Kökün Gini'si 0,459. Diğer adaylar: Nem = Yüksek 0,367 · Hava = Güneşli 0,394 · Hava = Yağmurlu 0,457.</p>
 
-<h2>2. Regresyon ağacı</h2>
+<h2>2. Regresyon ağacı</h2><div class="box tip"><span class="label">Çok basit düşün</span>Ev fiyatı gibi sayısal bir hedefi tahmin eder. Her yaprakta o gruptaki değerlerin ortalaması vardır; en iyi bölme toplam SSE'yi en çok azaltandır.</div>
 <p>Hedef sayı olunca ağacın tarifi aynı kalır, <b>iki şey</b> değişir:</p>
 <div class="table-wrap"><table>
 <tr><th></th><th>Sınıflandırma ağacı</th><th>Regresyon ağacı</th></tr>
@@ -57,7 +57,7 @@ export const WEEK7: Week = {
 <div class="box warn"><span class="label">Basamaklı tahmin</span>Ağaç yalnızca yaprak sayısı kadar farklı değer söyler: 96 m² de 125 m² de 4,0 alır. <b>Eğitim aralığının dışına çıkamaz:</b> 300 m²'lik eve de 6,2 der.</div>
 <p><b>Model ağacı (M5, Quinlan 1992):</b> yaprakta sabit sayı yerine küçük doğrusal model vardır. İlk yaprak 1,00 + 0,020 × m², ikincisi 2,29 + 0,0158 × m², üçüncüsü 4,48 + 0,0114 × m². 100 m²: regresyon ağacı 4,0, model ağacı 3,87 der. Bedeli her yaprakta ayrı bir regresyondur.</p>
 
-<h2>3. Maliyet-karmaşıklık budaması: α nereden gelir?</h2>
+<h2>3. Maliyet-karmaşıklık budaması: α nereden gelir?</h2><div class="box tip"><span class="label">Çok basit düşün</span>Budama, ağacın gereksiz dallarını keser. α büyüdükçe karmaşıklık daha pahalı hale gelir ve daha basit ağaç seçilir.</div>
 <div class="formula">α(düğüm) = (yaprak yapınca hata − alt ağacın hatası) ÷ (alt ağaçtaki yaprak − 1)</div>
 <p>Bu sayı dalın <b>yaprak başına önlediği hatadır</b>. En küçük α'lı düğüm en az iş gören daldır: <b>önce o kesilir</b> (en zayıf halka). Sonra hesap yenilenir, tek yaprak kalana dek sürer. Sonuç bir α dizisi ve iç içe ağaç dizisidir.</p>
 <details class="example"><summary>Elle örnek: 13 müşterilik Beden ağacı</summary><div class="inner">
@@ -80,7 +80,7 @@ export const WEEK7: Week = {
 </div></details>
 <p><b>Hangi α?</b> Doğrulama karar verir. Test ile seçmek sızıntıdır. scikit-learn: <code>cost_complexity_pruning_path</code> diziyi verir, <code>ccp_alpha</code> seçilen değerdir; yapraklardaki Gini ile çalıştığı için α'lar farklı ölçekte çıkar. <b>1-SE kuralı:</b> en düşük hatanın bir standart hata içindeki en basit ağaç seçilir.</p>
 
-<h2>4. Vekil bölme</h2>
+<h2>4. Vekil bölme</h2><div class="box tip"><span class="label">Çok basit düşün</span>Asıl soru için gereken değer yoksa onu iyi taklit eden başka bir soru kullanılır. Kilo eksikse Boy, Kilo sorusunun taraflarını iyi tahmin ediyorsa vekildir.</div>
 <p>Kilo bilinmiyorsa kök "Kilo ≤ 60?" cevaplanamaz. CART her düğümde asıl soruyu en iyi taklit eden <b>vekil</b> (surrogate) soruyu saklar. Kalite: kayıtları asıl soruyla aynı tarafa gönderme oranı.</p>
 <div class="table-wrap"><table>
 <tr><th>Aday</th><th>12 müşteride uyum</th></tr>
@@ -97,7 +97,7 @@ export const WEEK7: Week = {
 <tr><td>scikit-learn (1.3+)</td><td>Vekil kullanmaz, en iyi sonucu veren tarafa gönderir</td></tr>
 </table></div>
 
-<h2>5. Dengesiz veri: sınıf ağırlıkları</h2>
+<h2>5. Dengesiz veri: sınıf ağırlıkları</h2><div class="box tip"><span class="label">Çok basit düşün</span>Nadir sınıfı kaçırmak bazen yanlış alarm vermekten çok daha pahalıdır. Bu yüzden sadece doğruluğa bakmak yerine hata maliyetini düşün.</div>
 <p>3.000 makinenin %5,6'sı (168) arızalı; test 900 makine, 51 arıza.</p>
 <div class="table-wrap"><table>
 <tr><th></th><th>Tembel model</th><th>Ağırlıksız ağaç</th><th>class_weight='balanced'</th></tr>
@@ -108,7 +108,7 @@ export const WEEK7: Week = {
 <div class="formula">ağırlık = n ÷ (2 × sınıftaki kayıt)  →  arıza 3000÷336 ≈ 8,9 · sağlam 3000÷5664 ≈ 0,53  →  1 arıza ≈ 17 sağlam</div>
 <div class="box key"><span class="label">Doğruluk düştü, model iyileşti</span>Karar hatanın maliyetiyle verilir. Kaçan arıza yanlış alarmın 20 katı pahalıysa: ağırlıksız 36×20+2 = 722, ağırlıklı 8×20+97 = <b>257</b>. 5 katıysa: 182'ye karşı <b>137</b>.</div>
 
-<h2>6. Öznitelik önemi</h2>
+<h2>6. Öznitelik önemi</h2><div class="box tip"><span class="label">Çok basit düşün</span>Önem, modelin hangi sütunlardan yararlandığını anlatır; 'bu sütun sebep oldu' anlamına gelmez.</div>
 <p>Önem, o özniteliğin bölmelerindeki karışıklık azalmalarının düğümdeki kayıt payıyla tartılıp toplanması ve toplamı 1 olacak biçimde ölçeklenmesidir.</p>
 <details class="example"><summary>Elle örnek: Beden ağacı</summary><div class="inner">
 <p>Kök Gini = 0,6528. Kilo ≤ 60: sol saf, sağ 5 M · 3 L Gini 0,469; 0,469 × 8/12 = 0,3125 → katkı <b>0,340</b>. Boy = Uzun: 0,469 × 8/12 = <b>0,3125</b>.</p>
@@ -117,7 +117,7 @@ export const WEEK7: Week = {
 <div class="box warn"><span class="label">Tuzak: önem ≠ neden</span>x1'e neredeyse aynı bir ikiz (korelasyon 0,999) eklenince önemler 0,673 / 0,327'den x1 0,366 · ikiz 0,379 · x3 0,255 oldu. <b>Yüksek önem sebep demek değildir; düşük önem işe yaramaz demek değildir</b> (ikizi varsa bölünmüştür). Önem modelin neye dayandığını söyler, dünyanın nasıl işlediğini değil. Önce korelasyona bakın.</div>
 <p><b>MDI'nin yanlılıkları:</b> çok değerli özniteliklere yanlıdır ve eğitim verisinde hesaplanır. <b>Permütasyon önemi</b> değerleri karıştırıp doğruluk düşüşüne bakar; ama ilişkili özniteliklerde o da yanıltır.</p>
 
-<h2>7. Neden bir ağaç yetmez?</h2>
+<h2>7. Neden bir ağaç yetmez?</h2><div class="box tip"><span class="label">Çok basit düşün</span>Derin tek ağaç veriyi ezberleyebilir. Birçok ağacı birleştirmek, özellikle hatalar farklıysa, sonucu daha kararlı yapar.</div>
 <div class="table-wrap"><table>
 <tr><th></th><th>Yanlılık (bias)</th><th>Varyans (variance)</th></tr>
 <tr><td>Nedir?</td><td>Sistematik hata; atışların merkezden kayması</td><td>Kararsızlık; atışların dağılması</td></tr>
@@ -137,7 +137,7 @@ export const WEEK7: Week = {
 <p>Her biri %65 doğru, hataları bağımsız n model: <b>1 → %65,0 · 5 → %76,5 · 25 → %94,0 · 101 → %99,9</b>. Aynı hatayı yapıyorlarsa kaç tane olursa olsun %65. Tek model %50'nin altındaysa oylama işi kötüleştirir (Condorcet, 1785).</p>
 <div data-demo="vote"></div>
 
-<h2>8. Topluluk yöntemleri</h2>
+<h2>8. Topluluk yöntemleri</h2><div class="box tip"><span class="label">Çok basit düşün</span>Bagging ağaçları bağımsız kurup varyansı azaltır. Boosting ağaçları sırayla kurup önceki hatalara odaklanarak yanlılığı azaltır.</div>
 <p><b>Bootstrap:</b> n kayıtlık veriden <b>yerine koyarak</b> n kayıt çekilir. <b>Bagging</b> (Breiman 1996) her örneklemle ağaç kurup oylatır.</p>
 <div class="formula">Bir kaydın hiç gelmeme olasılığı (1 − 1/n)ⁿ ≈ 1/e ≈ 0,368  →  her ağaç verinin ≈ %63,2'sini görür</div>
 <p><b>OOB (out-of-bag):</b> Görülmeyen %36,8 o ağaç için hazır doğrulamadır; her kayıt onu görmeyen ağaçların oyuyla tahmin edilir. <b>Test verisinin yerini tutmaz.</b></p>
@@ -164,7 +164,7 @@ export const WEEK7: Week = {
 </table></div>
 <div class="box warn"><span class="label">Tersini yaparsak</span>Ormanı sığ ağaçlarla kurmak: oylama yanlılığı düzeltemez. Boosting'i derin ağaçlarla kurmak: ilk ağaç ezberler, artıklar sıfırlanır, sonrası gürültü öğrenir.</div>
 
-<h2>9. Vaka: Amazon'un işe alım modeli</h2>
+<h2>9. Vaka: Amazon'un işe alım modeli</h2><div class="box tip"><span class="label">Çok basit düşün</span>Model geçmişteki insan kararlarını öğrenebilir. Cinsiyet sütununu silmek tek başına yetmez; cinsiyeti temsil eden okul veya kelime gibi vekiller de yanlılık taşıyabilir.</div>
 <p>Reuters, Jeffrey Dastin, 10 Ekim 2018. Edinburgh'daki ekip 2014'te özgeçmişlere 1–5 yıldız veren model kurmaya başladı. Son 10 yılın, çoğu erkeklerden gelen özgeçmişleriyle eğitildi. "women's" kelimesini cezalandırdı, iki kadın kolejinin mezunlarının puanını düşürdü. 2015'te fark edildi, ekip 2017 başında dağıtıldı.</p>
 <div class="box key"><span class="label">Üç ders</span><b>Model geçmişi öğrenir:</b> hedef "kim işe alındı" ise modelin öğrendiği "en iyi aday" değil "geçmişte kimin seçildiği"dir. <b>Sütunu silmek yetmez:</b> cinsiyet yoktu ama vekilleri (kelime, okul) vardı. <b>Önem tablosuna bakın:</b> "women's" gibi terim alarm işaretidir.</div>
 <p>Haber modelin türünü açıklamaz; vaka bir "karar ağacı hatası" değil, vekil öznitelik mekanizmasının örneğidir.</p>
