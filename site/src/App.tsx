@@ -117,7 +117,7 @@ function Home() {
       <ol className="ml-5 list-decimal space-y-1 text-sm leading-relaxed">
         <li>Her haftanın özetini oku; elle örnekleri kâğıt kalemle kendin çöz.</li>
         <li>Formülleri bir sayfaya yaz: destek/güven/lift, Gini/entropi, SSE, α, normalizasyonlar, 1,5·ÇAA.</li>
-        <li>Deneme 1–3 kavramları, Deneme 4 hesapları, Deneme 5 vaka ve tuzakları ölçer. Deneme 6–9 ve 11 haftalara odaklanır, Deneme 10 genel provadır.</li>
+        <li>Deneme 1–3 kavramları, Deneme 4 hesapları, Deneme 5 vaka ve tuzakları ölçer. <b>Deneme 6–10 sınav formatındadır:</b> 20 soru, 7. hafta dahil, hesap makinesi gerektirmez, yorumlama ağırlıklıdır.</li>
         <li>Yanlış yaptığın sorunun haftasına dönüp o bölümü tekrar oku.</li>
       </ol>
       <div className="lesson"><div className="box tip"><span className="label">Sınavda en çok karıştırılanlar</span>Destekte payda tüm sepetler, güvende öncülün sepetleri · Aralık ↔ oran · Slice tek boyut, dice iki+ boyut · SCD Tip 1 düzeltme, Tip 2 gerçek değişiklik · MCAR / MAR / MNAR · Jaccard "ikisi de 0"ı saymaz, SMC sayar · Kazanç oranı Gün tuzağını azaltır ama yok etmez · Bagging varyansı, boosting yanlılığı düşürür · OOB testin yerini tutmaz · Önem ≠ neden.</div></div>
@@ -166,7 +166,10 @@ function TestList() {
       <Badge variant="secondary">Vize denemeleri</Badge>
       <h1 className="mt-2 text-3xl font-semibold tracking-tight">{TESTS.length} deneme, {totalQ} soru</h1>
       <p className="mt-1 text-muted-foreground">Önce soruyu kendin çöz. Şıkkı seçince doğru cevap, kısa gerekçe ve tekrar etmen gereken haftayı görebilirsin.</p>
-      <div className="mt-4 rounded-lg border bg-muted/40 p-3 text-sm">
+      <div className="mt-4 rounded-lg border border-amber-500/40 bg-amber-500/10 p-3 text-sm">
+        <b>Hocanın duyurusu:</b> Sınavın tamamı 20 test sorusu. 7. hafta dahil. Hesap makinesine gerek yok; daha çok yorumlama yeteneği ölçülecek. <b>Deneme 6–10</b> bu formata göre hazırlandı.
+      </div>
+      <div className="mt-3 rounded-lg border bg-muted/40 p-3 text-sm">
         <b>Deneme taktiği:</b> Önce sorunun hangi konuyu ölçtüğünü bul → bildiğin formülü/kurala yaz → şıkları ele → sonra cevabı işaretle. Yanlışsa sadece cevabı ezberleme; açıklamadaki “neden” kısmını oku.
       </div>
       <div className="mt-5 grid gap-2">

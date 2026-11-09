@@ -1,5 +1,6 @@
 import { TESTS_BASE } from '../src/data/tests.ts'
 import { DENEME_H7, H7_EKLER } from '../src/data/week7tests.ts'
+import { YORUM_TESTS } from '../src/data/yorumTests.ts'
 
 let bad = 0
 const eq = (n: string, a: number, b: number, tol = 0.0006) => { if (Math.abs(a - b) > tol) { console.log('HATA', n, a, b); bad++ } }
@@ -33,5 +34,16 @@ all.forEach((q) => {
   if (seen.has(q.q)) { console.log('TEKRAR', q.q); bad++ } seen.add(q.q)
   if (q.o.length !== 4 || new Set(q.o).size !== 4 || q.a < 0 || q.a > 3 || !q.e || q.w !== 7) { console.log('YAPI', q.q); bad++ }
 })
+// Deneme 6–10 (yorum ağırlıklı genel prova)
+YORUM_TESTS.forEach((t) => {
+  if (t.questions.length !== 20) { console.log('SAYI', t.title, t.questions.length); bad++ }
+  const weeks = new Set(t.questions.map((q) => q.w))
+  for (let w = 1; w <= 7; w++) if (!weeks.has(w)) { console.log('HAFTA EKSİK', t.title, w); bad++ }
+  t.questions.forEach((q) => {
+    if (seen.has(q.q)) { console.log('TEKRAR', q.q); bad++ } seen.add(q.q)
+    if (q.o.length !== 4 || new Set(q.o).size !== 4 || q.a < 0 || q.a > 3 || !q.e || q.w < 1 || q.w > 7) { console.log('YAPI', q.q); bad++ }
+  })
+})
+console.log('Yorum denemeleri:', YORUM_TESTS.length, '×', YORUM_TESTS.map((t) => t.questions.length).join('/'))
 console.log('H7 soru:', all.length, '· D11:', DENEME_H7.length, '· toplam:', TESTS_BASE.reduce((s, t) => s + t.questions.length, 0) + all.length)
 console.log(bad ? `${bad} HATA` : 'TÜM KONTROLLER GEÇTİ')
